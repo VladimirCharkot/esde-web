@@ -1,0 +1,40 @@
+{
+  "name": "esde-next",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "d3": "^7.9.0",
+    "gray-matter": "^4.0.3",
+    "jsdom": "^30.0.1",
+    "lodash": "^4.18.1",
+    "markdown-it": "^15.0.2",
+    "markdown-it-attrs": "^5.0.1",
+    "markdown-it-bracketed-spans": "^1.0.3",
+    "markdown-it-container": "^4.0.0",
+    "markdown-it-div": "^1.1.0",
+    "markdown-it-footnote": "^4.0.0",
+    "next": "16.3.5",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@types/d3": "^7.4.3",
+    "@types/jsdom": "^30.0.0",
+    "@types/lodash": "^4.17.25",
+    "@types/markdown-it": "^14.2.0",
+    "@types/markdown-it-container": "^4.0.1",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.5",
+    "sass": "^1.104.1",
+    "typescript": "^5"
+  }
+}

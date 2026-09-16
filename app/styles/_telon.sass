@@ -1,0 +1,89 @@
+@use 'settings'
+
+.telon
+
+    // Telonicidad
+    position: absolute
+    z-index: 10
+    box-sizing: border-box
+    height: 100vh
+    width: 100vw
+    background: white
+
+    & > div
+        // Layout flow vertical
+        min-height: 100%
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+
+        // Texto
+        padding: 2em
+        p
+            max-width: 25em
+            text-align: center
+
+        // Titulo
+        h1
+            font-family: 'Libre Baskerville', sans-serif
+            font-size: 0.8em
+            letter-spacing: 0.28em
+            text-transform: uppercase
+            opacity: 0
+            text-align: center
+
+        // Link de "Seguir al sitio"
+        a
+            margin-top: 1em
+            font-family: 'EB Garamond', sans-serif
+            font-size: 0.8em
+            letter-spacing: 0.28em
+            text-transform: uppercase
+            font-weight: 800
+            text-decoration: underline
+
+    // Telón blanco tapando el background
+    &.visible
+        opacity: 1
+        visibility: inherit
+
+    // Fade in del contenido del telón
+    &.aparecer
+        h1
+            animation: anim-fade-in 1s forwards
+        p
+            animation: anim-fade-in 1s forwards
+
+    // Fade out del telón entero
+    &.desvanecer
+        pointer-events: none
+        animation: anim-fade-out 4s forwards
+        h1
+            animation: anim-fade-out 2s forwards
+        p
+            animation: anim-fade-out 1s forwards
+        a
+            animation: anim-fade-out 0.5s forwards
+
+    // Quitarlo del render
+    &.escondido
+        opacity: 0
+        visibility: hidden
+
+@media (max-width: settings.$layout-breakpoint-small)
+    h1
+        font-size: 0.8em
+        letter-spacing: 0.12em
+
+@keyframes anim-fade-out
+    0%
+        opacity: 1
+    100%
+        opacity: 0
+
+@keyframes anim-fade-in
+    0%
+        opacity: 0
+    100%
+        opacity: 1

@@ -1,0 +1,174 @@
+@use "settings"
+
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap")
+
+@mixin flex-horizontal-even
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+@mixin standout-text
+  font-family: 'Libre Baskerville', sans-serif
+  letter-spacing: 0.28em
+  text-transform: uppercase
+  &:hover
+    text-shadow: 1px 1px #b4b4b4
+
+$header-height: 8vh
+$resultados-height: 50vh
+$fade-overlay-height: 15vh
+
+$tamanio-elementos-interactivos: 11em
+
+header
+  @include flex-horizontal-even
+  @include standout-text
+
+  z-index: 1
+  width: 100vw
+  padding: 0.5em
+
+  position: fixed
+
+  transition: 0.5s
+
+  border-bottom: 0px solid #0000
+
+  height: $header-height
+
+  h1
+    opacity: 0.2
+    font-size: 1em
+    margin: 0.5em
+    display: inline-block
+    transition: 0.3s
+
+  .placeholder
+    width: $tamanio-elementos-interactivos
+
+  nav
+    opacity: 0.2
+    width: $tamanio-elementos-interactivos
+    padding: 1em
+    cursor: pointer
+    text-shadow: 2px 2px #cdcdcd
+    white-space: nowrap
+
+  &.hovereado, &.habitado
+    background-color: rgba(255,255,255,0.65)
+    border-bottom: 1px solid rgba(0,0,0,1)
+    h1
+      opacity: 1
+      color: black
+    nav
+      opacity: 1
+    #indice, #area_busqueda a
+      opacity: 1
+
+  &.resultados
+    background-color: #fffe
+
+
+  #area_busqueda
+    display: flex
+    flex-direction: row
+    margin-right: 2em
+    width: $tamanio-elementos-interactivos
+
+    // Input de búsqueda
+    #busqueda
+      transition: 1s
+
+      border: none
+      border-bottom: 1px solid gainsboro
+      font-family: 'Libre Baskerville', sans-serif
+      background-color: #fff6
+      
+      // No outline en el input de búsqueda
+      &:focus
+        outline: none
+      &:focus-visible
+        outline-width: 0
+
+@media (max-width: settings.$layout-breakpoint-small)
+  header
+
+    // Ajustamos el tamaño de fuente
+    h1
+      font-size: 0.6em
+
+    // Escondemos el texto en el nav back
+    nav 
+      width: max-content
+      .texto-volver
+        display: inline-block
+        width: 0
+        visibility: hidden
+
+    // Escondemos la barra de búsqueda
+    #area_busqueda
+      display: inline-block
+      width: 0
+      visibility: hidden
+    
+    .placeholder
+      display: inline-block
+      width: 0
+      visibility: hidden
+
+
+// Área de los resultados de búsqueda
+#resultados
+
+  overflow: scroll
+  z-index: 1
+
+  position: fixed
+  top: $header-height
+
+  background: #eae3d9
+
+  width: 100vw
+  height: $resultados-height
+  padding: 0 20vw
+  padding-top: 1em
+
+  transition: 1s
+
+  background: #fffe
+
+  .resultado
+    opacity: 0.7
+    cursor: pointer
+    display: block
+
+    &:first-of-type
+        margin-top: 5vh
+
+    &:last-of-type
+        margin-bottom: $fade-overlay-height
+
+    &:hover
+      opacity: 1
+      h4
+        color: #9b8303
+
+    h4
+        margin: 0
+        padding: 0em 1em
+
+    p
+        font-size: 0.7em
+        padding: 0em 0.1em
+        padding-bottom: 1em
+        margin: 0.6em 1em
+
+  /* Fade del texto (overlay con gradiente de transparente a blanco) */
+  &::after
+    position: fixed
+    content: ''
+    width: 100vw
+    height: $fade-overlay-height
+    top: 6vh + $header-height + $resultados-height - $fade-overlay-height
+    left: 0
+    background: linear-gradient(180deg, rgba(255,255,255,0) 0%, white 50%, white 80%, rgba(255,255,255,0.10966384844953603) 100%)

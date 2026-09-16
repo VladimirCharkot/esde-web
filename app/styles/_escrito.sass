@@ -1,0 +1,146 @@
+/* Escrito */
+@use 'settings'
+
+.texto
+  background: url(/img/ruido.png) fixed
+  margin: 0
+  display: flex
+  flex-direction: column
+  hr
+    width: 30%
+
+  h2
+    font: 3.4em 'Cinzel'
+    padding: 0em 20%
+    padding-top: 1.8em
+    color: white
+    text-align: right
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black
+  h3, h4
+    padding: 0.2em 20%
+  p
+    padding: 0px 20% 0px 20%
+
+  .ventana
+    &.cabecera
+      height: 60vh
+      min-height: auto
+    img
+      display: none
+    min-height: 40vh
+    border-top: 2px solid black
+    border-bottom: 2px solid black
+    // min-height: 40vh
+    // min-height: var(--altura-ventanas)
+    background-attachment: var(--attach-default)
+    background-image: var(--url-imagen) /* Se espera que esté definida en el elemento (div) */
+    background-size: var(--escala, var(--escala-default))
+    background-position: var(--posicion, var(--posicion-default))
+
+@media (max-width: settings.$layout-breakpoint-small)
+  .texto 
+    h2
+      font-size: 1.55em
+      letter-spacing: 0.12em
+      padding: 0em 1.6em
+      padding-top: 2.8em
+    p
+      padding: 0 1.6em
+    .cabecera
+      background-attachment: initial
+
+
+  // .cabecera
+  //   @media(max-width: 1000px)
+  //   position: relative
+  //   h2
+  //     position: absolute
+  //     bottom: 0
+  //     right: 0
+
+
+.piel
+  padding: var(--pad, var(--pad-default))
+  background-attachment: var(--attach, var(--attach-default))
+  background-color: var(--color, var(--color-default))
+  background-image: var(--textura, var(--textura-default))
+  background-blend-mode: var(--blend, var(--blend-default))
+
+
+
+.footnote-item
+  margin: 0 20vw
+
+.footnote-item p
+  padding: 0
+
+.backref-highlight
+  border-radius: 20%
+  animation: 2s ease-in backref-highlight
+
+.ref-highlight
+  &::marker
+    animation: 2s ease-in ref-highlight
+
+@keyframes backref-highlight
+  0%
+    background-color: #75d2ff
+    padding: 0.2em
+  100%
+    background-color: #75d2ff00
+    padding: 0em
+
+@keyframes ref-highlight
+  0%
+    color: #75d2ff
+    font-size: 2em
+  100%
+    color: #000
+    font-size: 1em
+
+
+
+
+
+// Traído de pieles.css
+/* Escrito */
+
+
+html
+  --color-base: #fcfaf4
+  --color-default: #e2f7eb88
+  --textura-default: url(/img/bamboo.png)
+  --blend-default: hard-light
+  --attach-default: fixed
+  --pad-default: 5px 0px
+  --altura-ventanas: 400px
+  --escala-default: cover
+  --posicion-default: center
+
+
+
+
+
+.verde
+  background-color: #e2f7eb88
+
+
+.naranja
+  background-color: #f6ba8f66
+
+
+.celeste
+  background-color: #d7e8ff
+
+
+
+.firma
+  text-align: right
+  padding-bottom: 3em
+  flex: 1 0 auto
+
+
+blockquote 
+    text-align: right
+    font-style: italic
+
